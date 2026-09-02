@@ -1,0 +1,19 @@
+{
+  "benchmark_name": "Leak-Free Meat Freshness Benchmark",
+  "benchmark_version": "0.1.0",
+  "source_dataset": {
+    "title": "A Comprehensive Image Dataset for Accurate Authentication of Meat Species and Hourly Freshness Using Artificial Intelligence in Food Safety",
+    "url": "https://data.mendeley.com/datasets/4tj9t3n6vj/1",
+    "version": 1
+  },
+  "random_seed": 42,
+  "hash_algorithm": "sha256",
+  "classes": ["0 hr Beef", "12 hr Beef", "24 hr Beef", "36+ hr Beef", "0 hr Mutton", "12 hr Mutton", "24 hr Mutton", "36+ hr Mutton"],
+  "expected_counts": {"train": 1290, "valid": 277, "test": 282, "total": 1849},
+  "class_mapping": {
+    "0 hr Beef": "0 hr Beef", "12 hr Beef": "12 hr Beef", "24 hr Beef": "24 hr Beef", "36+ hr Beef": "36+ hr Beef",
+    "0 hr Mutton": "0 hr Mutton", "12 hr Mutton": "12 hr Mutton", "24 hr Mutton": "24 hr Mutton",
+    "36 hr Mutton": "36+ hr Mutton", "48 hr Mutton": "36+ hr Mutton"
+  }
+}
+

@@ -1,0 +1,57 @@
+{
+  "benchmark_version": "0.1.0",
+  "manifest": "manifests/benchmark_manifest.csv",
+  "split_counts": {
+    "train": 1290,
+    "valid": 277,
+    "test": 282
+  },
+  "class_counts": {
+    "train": {
+      "0 hr Beef": 140,
+      "0 hr Mutton": 144,
+      "12 hr Beef": 142,
+      "12 hr Mutton": 146,
+      "24 hr Beef": 158,
+      "24 hr Mutton": 151,
+      "36+ hr Beef": 157,
+      "36+ hr Mutton": 252
+    },
+    "valid": {
+      "0 hr Beef": 30,
+      "0 hr Mutton": 31,
+      "12 hr Beef": 31,
+      "12 hr Mutton": 31,
+      "24 hr Beef": 34,
+      "24 hr Mutton": 32,
+      "36+ hr Beef": 34,
+      "36+ hr Mutton": 54
+    },
+    "test": {
+      "0 hr Beef": 31,
+      "0 hr Mutton": 31,
+      "12 hr Beef": 31,
+      "12 hr Mutton": 32,
+      "24 hr Beef": 35,
+      "24 hr Mutton": 33,
+      "36+ hr Beef": 34,
+      "36+ hr Mutton": 55
+    }
+  },
+  "leakage": {
+    "train-valid": {
+      "sha256_overlap_count": 0,
+      "source_identity_overlap_count": 0
+    },
+    "train-test": {
+      "sha256_overlap_count": 0,
+      "source_identity_overlap_count": 0
+    },
+    "valid-test": {
+      "sha256_overlap_count": 0,
+      "source_identity_overlap_count": 0
+    }
+  },
+  "checks_passed": true,
+  "errors": []
+}
