@@ -3,6 +3,7 @@ message: "If you use this benchmark or its audit code, please cite the associate
 title: "Leak-Free Meat Freshness Benchmark"
 type: software
 version: 1.0.0
+doi: "10.5281/zenodo.22733892"
 authors:
   - family-names: Citak
     given-names: Ahmet Can

@@ -2,7 +2,7 @@
 
 Reproducibility package for the nine-class beef and mutton freshness benchmark described in the associated manuscript. The package records the original-dataset audit, the fixed clean split, leakage verification, the four-model five-seed training protocol, and the reported aggregate results.
 
-> **Release status:** release candidate for `v1.0.0`. The scientific contents are complete and verified. The archival Zenodo DOI and immutable release commit will be added after the GitHub release is frozen.
+> **Release status:** the scientific contents for `v1.0.0` are complete and verified. The associated dataset archive has the reserved Zenodo DOI [`10.5281/zenodo.22733892`](https://doi.org/10.5281/zenodo.22733892); the DOI will resolve after the Zenodo record is published.
 
 ## Benchmark
 
@@ -31,7 +31,7 @@ The benchmark contains 1,849 original images. Offline-augmented images are exclu
 - `notebooks/meat_freshness_9class_multirun.ipynb`: resumable four-model, five-seed experiment and paper-ready aggregation.
 - `results/`: the verified aggregate tables, seed-level comparisons, McNemar-Holm results, and Figure 16 generated from 20 completed runs.
 
-Image files and model checkpoints are not committed to Git. The source images remain governed by the Mendeley dataset terms.
+Image files and model checkpoints are not committed to Git. The cleaned image benchmark is archived separately under Zenodo DOI [`10.5281/zenodo.22733892`](https://doi.org/10.5281/zenodo.22733892). The source and cleaned images remain under CC BY 4.0; see `data/README.md` for attribution and the change notice.
 
 ## Install
 
@@ -90,4 +90,4 @@ Use the manifest, configuration, scripts, reports, notebook, and results from th
 
 ## Citation
 
-Citation metadata is provided in `CITATION.cff`. The Zenodo DOI and immutable release commit will be inserted after the `v1.0.0` release is created.
+Citation metadata is provided in `CITATION.cff`. Cite the cleaned dataset using Zenodo DOI [`10.5281/zenodo.22733892`](https://doi.org/10.5281/zenodo.22733892) and use the matching `v1.0.0` GitHub release for code and result provenance.
