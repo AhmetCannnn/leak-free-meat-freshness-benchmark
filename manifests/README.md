@@ -1,9 +1,7 @@
-# Benchmark manifests
+# Benchmark manifest
 
-`benchmark_manifest.csv` is the canonical machine-readable definition of the
-clean benchmark. Each row identifies one file and records its split, class,
-filename, byte size, SHA-256 digest, and optional source provenance.
+`benchmark_manifest_md5.csv` is the canonical machine-readable definition of the fixed nine-class benchmark. It contains one row per image with split, class name, clean filename, benchmark-relative path, byte size, and MD5 digest.
 
-Generate it with `scripts/create_benchmark_manifest.py`. Source provenance
-fields remain empty when `--source-root` is omitted.
+The manifest contains 1,849 data rows. It records membership and exact byte identity without redistributing the underlying source images.
 
+`verification_report.json` is the dataset-side metadata consumed by the released training notebook. The reconstruction script copies both files into the rebuilt dataset root.

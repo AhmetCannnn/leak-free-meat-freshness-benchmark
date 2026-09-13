@@ -14,7 +14,7 @@ IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".bmp", ".tif", ".tiff"}
 
 
 def digest(path: Path) -> str:
-    hasher = hashlib.sha256()
+    hasher = hashlib.md5()
     with path.open("rb") as stream:
         for chunk in iter(lambda: stream.read(1024 * 1024), b""):
             hasher.update(chunk)
@@ -24,7 +24,12 @@ def digest(path: Path) -> str:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--source-root", type=Path, required=True)
-    parser.add_argument("--manifest", type=Path, default=Path("manifests/benchmark_manifest.csv"))
+    parser.add_argument("--manifest", type=Path, default=Path("manifests/benchmark_manifest_md5.csv"))
+    parser.add_argument(
+        "--verification-metadata",
+        type=Path,
+        default=Path("manifests/verification_report.json"),
+    )
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     if args.output.exists() and any(args.output.iterdir()):
@@ -38,15 +43,16 @@ def main() -> None:
     with args.manifest.open(encoding="utf-8", newline="") as stream:
         rows = list(csv.DictReader(stream))
     for row in rows:
-        matches = index.get(row["sha256"], [])
+        matches = index.get(row["md5"], [])
         if not matches:
-            raise FileNotFoundError(f"Source image not found for SHA-256 {row['sha256']}")
-        destination = args.output / row["clean_relative_path"]
+            raise FileNotFoundError(f"Source image not found for MD5 {row['md5']}")
+        destination = args.output / row["relative_path"]
         destination.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(matches[0], destination)
+    shutil.copy2(args.manifest, args.output / "benchmark_manifest_md5.csv")
+    shutil.copy2(args.verification_metadata, args.output / "verification_report.json")
     print(f"Reconstructed {len(rows)} files in {args.output}")
 
 
 if __name__ == "__main__":
     main()
-

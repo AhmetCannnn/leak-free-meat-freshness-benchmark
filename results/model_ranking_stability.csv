@@ -1,0 +1,9 @@
+Metric,Model,Mean rank,Rank SD,First-place seeds,Seeds evaluated
+test_accuracy,EfficientNet-B0,1.8,0.4472135954999579,1,5
+test_accuracy,MobileNetV2,4.0,0.0,0,5
+test_accuracy,MobileNetV3-Large,1.2,0.4472135954999579,4,5
+test_accuracy,ShuffleNetV2,3.0,0.0,0,5
+macro_f1,EfficientNet-B0,1.8,0.4472135954999579,1,5
+macro_f1,MobileNetV2,4.0,0.0,0,5
+macro_f1,MobileNetV3-Large,1.2,0.4472135954999579,4,5
+macro_f1,ShuffleNetV2,3.0,0.0,0,5

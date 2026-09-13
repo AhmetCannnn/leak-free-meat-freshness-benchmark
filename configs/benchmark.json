@@ -1,19 +1,42 @@
 {
   "benchmark_name": "Leak-Free Meat Freshness Benchmark",
-  "benchmark_version": "0.1.0",
+  "benchmark_version": "1.0.0",
   "source_dataset": {
     "title": "A Comprehensive Image Dataset for Accurate Authentication of Meat Species and Hourly Freshness Using Artificial Intelligence in Food Safety",
     "url": "https://data.mendeley.com/datasets/4tj9t3n6vj/1",
     "version": 1
   },
-  "random_seed": 42,
-  "hash_algorithm": "sha256",
-  "classes": ["0 hr Beef", "12 hr Beef", "24 hr Beef", "36+ hr Beef", "0 hr Mutton", "12 hr Mutton", "24 hr Mutton", "36+ hr Mutton"],
+  "hash_algorithm": "md5",
+  "classes": [
+    "0 hr Beef",
+    "12 hr Beef",
+    "24 hr Beef",
+    "36+ hr Beef",
+    "0 hr Mutton",
+    "12 hr Mutton",
+    "24 hr Mutton",
+    "36 hr Mutton",
+    "48 hr Mutton"
+  ],
   "expected_counts": {"train": 1290, "valid": 277, "test": 282, "total": 1849},
-  "class_mapping": {
-    "0 hr Beef": "0 hr Beef", "12 hr Beef": "12 hr Beef", "24 hr Beef": "24 hr Beef", "36+ hr Beef": "36+ hr Beef",
-    "0 hr Mutton": "0 hr Mutton", "12 hr Mutton": "12 hr Mutton", "24 hr Mutton": "24 hr Mutton",
-    "36 hr Mutton": "36+ hr Mutton", "48 hr Mutton": "36+ hr Mutton"
+  "expected_class_counts": {
+    "train": {"0 hr Beef": 140, "12 hr Beef": 142, "24 hr Beef": 158, "36+ hr Beef": 157, "0 hr Mutton": 144, "12 hr Mutton": 146, "24 hr Mutton": 151, "36 hr Mutton": 103, "48 hr Mutton": 149},
+    "valid": {"0 hr Beef": 30, "12 hr Beef": 31, "24 hr Beef": 34, "36+ hr Beef": 34, "0 hr Mutton": 31, "12 hr Mutton": 31, "24 hr Mutton": 32, "36 hr Mutton": 22, "48 hr Mutton": 32},
+    "test": {"0 hr Beef": 31, "12 hr Beef": 31, "24 hr Beef": 35, "36+ hr Beef": 34, "0 hr Mutton": 31, "12 hr Mutton": 32, "24 hr Mutton": 33, "36 hr Mutton": 23, "48 hr Mutton": 32}
+  },
+  "training": {
+    "models": ["mobilenetv3_large_100", "efficientnet_b0", "mobilenetv2_100", "shufflenet_v2_x1_0"],
+    "seeds": [42, 123, 2026, 3407, 9103],
+    "image_size": 224,
+    "batch_size": 32,
+    "maximum_epochs": 35,
+    "early_stopping_patience": 6,
+    "optimizer": "AdamW",
+    "learning_rate": 0.00005,
+    "weight_decay": 0.05,
+    "scheduler": "CosineAnnealingLR",
+    "loss": "Focal Loss",
+    "focal_gamma": 2.0,
+    "full_network_fine_tuning": true
   }
 }
-

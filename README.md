@@ -1,24 +1,12 @@
 # Leak-Free Meat Freshness Benchmark
 
-Reproducibility package for an 8-class beef and mutton freshness benchmark
-created after auditing structural duplication and cross-split leakage in a
-publicly available source dataset.
+Reproducibility package for the nine-class beef and mutton freshness benchmark described in the associated manuscript. The package records the original-dataset audit, the fixed clean split, leakage verification, the four-model five-seed training protocol, and the reported aggregate results.
 
-> **Release status:** pre-release (`0.1.0`). The benchmark manifest and leakage
-> verification are included. Model-result reconciliation and the archival DOI
-> are still pending; no DOI or final paper result is claimed in this version.
-
-## Main contribution
-
-The package provides:
-
-- an exact, versioned manifest for the 1,849-image clean benchmark;
-- source-dataset duplicate auditing;
-- deterministic reconstruction from source images and SHA-256 checksums;
-- within-split and cross-split leakage verification;
-- training and checkpoint evaluation for four compact image classifiers.
+> **Release status:** release candidate for `v1.0.0`. The scientific contents are complete and verified. The archival Zenodo DOI and immutable release commit will be added after the GitHub release is frozen.
 
 ## Benchmark
+
+The benchmark contains 1,849 original images. Offline-augmented images are excluded. Exact duplicate checks use MD5, matching the manuscript methodology. The byte-identical 36 h and 48 h Beef folders are represented once as `36+ hr Beef`; the distinct 36 h and 48 h Mutton stages remain separate.
 
 | Class | Train | Validation | Test | Total |
 |---|---:|---:|---:|---:|
@@ -29,73 +17,77 @@ The package provides:
 | 0 hr Mutton | 144 | 31 | 31 | 206 |
 | 12 hr Mutton | 146 | 31 | 32 | 209 |
 | 24 hr Mutton | 151 | 32 | 33 | 216 |
-| 36+ hr Mutton | 252 | 54 | 55 | 361 |
+| 36 hr Mutton | 103 | 22 | 23 | 148 |
+| 48 hr Mutton | 149 | 32 | 32 | 213 |
 | **Total** | **1,290** | **277** | **282** | **1,849** |
 
-## Quick start
+## Repository contents
+
+- `manifests/benchmark_manifest_md5.csv`: exact split membership and MD5 digest for every benchmark image.
+- `manifests/verification_report.json`: fixed-split verification metadata used by the training notebook.
+- `scripts/audit_original_dataset.py`: exact-duplicate audit for the Mendeley original images.
+- `scripts/build_clean_benchmark.py`: deterministic reconstruction from the original images and manifest.
+- `scripts/verify_clean_benchmark.py`: class, count, file, MD5, and cross-split leakage checks.
+- `notebooks/meat_freshness_9class_multirun.ipynb`: resumable four-model, five-seed experiment and paper-ready aggregation.
+- `results/`: the verified aggregate tables, seed-level comparisons, McNemar-Holm results, and Figure 16 generated from 20 completed runs.
+
+Image files and model checkpoints are not committed to Git. The source images remain governed by the Mendeley dataset terms.
+
+## Install
+
+Python 3.9 was used for the reported experiment.
 
 ```bash
-python -m venv .venv
+python3 -m venv .venv
 source .venv/bin/activate
-pip install -r requirements.txt
+python3 -m pip install -r requirements.txt
 ```
 
-Create or refresh the canonical manifest from an existing clean benchmark:
+## Reconstruct and verify the benchmark
+
+Download version 1 of the source dataset from [Mendeley Data](https://data.mendeley.com/datasets/4tj9t3n6vj/1). Point `--source-root` to its `Meat Freshness/Original Images` directory.
 
 ```bash
-python scripts/create_benchmark_manifest.py \
-  --benchmark-root /path/to/Clean_Dataset_8class_splits \
-  --source-root /path/to/source/original/images
+python3 scripts/audit_original_dataset.py \
+  --source-root "/path/to/Meat Freshness/Original Images"
+
+python3 scripts/build_clean_benchmark.py \
+  --source-root "/path/to/Meat Freshness/Original Images" \
+  --output Clean_Dataset_9class_splits
+
+python3 scripts/verify_clean_benchmark.py \
+  --benchmark-root Clean_Dataset_9class_splits
 ```
 
-Verify the benchmark:
+The verification command must report 1,849 files, nine expected classes, no duplicate MD5 within a split, no MD5 overlap across splits, and no MD5 overlap between the 36 h and 48 h Mutton classes.
+
+## Training and resume
+
+The notebook defaults to a two-epoch pilot. The full command selects four models, five prespecified seeds (`42`, `123`, `2026`, `3407`, `9103`), and at most 35 epochs per run:
 
 ```bash
-python scripts/verify_clean_benchmark.py \
-  --benchmark-root /path/to/Clean_Dataset_8class_splits
+python3 scripts/run_notebook_streaming.py --full
 ```
 
-Reconstruct it into a new, empty directory:
+Each completed epoch is checkpointed. Restarting the same command resumes an incomplete compatible run and skips verified completed runs. The paper-ready aggregation is blocked unless all 20 compatible runs exist.
 
-```bash
-python scripts/build_clean_benchmark.py \
-  --source-root /path/to/source/original/images \
-  --output data/clean
-```
+## Reported results
 
-Audit exact duplicates in the source data:
+The principal five-run test results are:
 
-```bash
-python scripts/audit_original_dataset.py \
-  --source-root /path/to/source/original/images
-```
+| Model | Accuracy (%) | Macro precision (%) | Macro recall (%) | Macro F1 (%) |
+|---|---:|---:|---:|---:|
+| MobileNetV3-Large | 98.51 ± 0.58 | 98.56 ± 0.53 | 98.59 ± 0.53 | 98.54 ± 0.55 |
+| EfficientNet-B0 | 96.74 ± 0.98 | 96.81 ± 1.02 | 96.86 ± 0.96 | 96.76 ± 1.03 |
+| ShuffleNetV2 | 93.33 ± 1.69 | 93.77 ± 1.49 | 93.69 ± 1.61 | 92.84 ± 1.84 |
+| MobileNetV2 | 91.77 ± 1.53 | 91.93 ± 1.59 | 92.10 ± 1.45 | 91.77 ± 1.60 |
 
-Train and evaluate the mobile models:
-
-```bash
-python scripts/train_mobile_models.py --dataset-root data/clean --output runs
-python scripts/evaluate_checkpoints.py --dataset-root data/clean --checkpoint-root runs
-```
+All displayed values are derived from the machine-readable files under `results/`. CPU-inference profiling and Apple Silicon MPS training-efficiency measurements are separate protocols in the manuscript and must not be conflated.
 
 ## Reproducibility contract
 
-The manifest, configuration, scripts, and reports in one tagged release must
-be used together. A benchmark passes verification only when all configured
-counts and classes match and neither SHA-256 nor source identity crosses a
-split boundary.
-
-See [the protocol](docs/benchmark_protocol.md), [data instructions](data/README.md),
-and [manifest documentation](manifests/README.md).
-
-## Data and licensing
-
-The software is MIT licensed. That license does not relicense third-party
-images. Consult `data/README.md` and the source dataset terms before
-redistributing image files.
+Use the manifest, configuration, scripts, reports, notebook, and results from the same tagged release. Do not combine these files with pilot outputs or files from earlier project versions. See `docs/benchmark_protocol.md` for the complete decision record.
 
 ## Citation
 
-Citation metadata is provided in `CITATION.cff`. A Zenodo DOI, `v1.0.0` tag,
-and corresponding commit hash will be added after the release contents and
-reported model metrics are frozen.
-
+Citation metadata is provided in `CITATION.cff`. The Zenodo DOI and immutable release commit will be inserted after the `v1.0.0` release is created.

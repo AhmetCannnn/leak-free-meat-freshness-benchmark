@@ -1,0 +1,85 @@
+{
+  "created_at_utc": "2026-09-07T11:45:47.694290+00:00",
+  "benchmark_classes": [
+    "0 hr Beef",
+    "12 hr Beef",
+    "24 hr Beef",
+    "36+ hr Beef",
+    "0 hr Mutton",
+    "12 hr Mutton",
+    "24 hr Mutton",
+    "36 hr Mutton",
+    "48 hr Mutton"
+  ],
+  "split_counts": {
+    "train": {
+      "0 hr Beef": 140,
+      "12 hr Beef": 142,
+      "24 hr Beef": 158,
+      "36+ hr Beef": 157,
+      "0 hr Mutton": 144,
+      "12 hr Mutton": 146,
+      "24 hr Mutton": 151,
+      "36 hr Mutton": 103,
+      "48 hr Mutton": 149
+    },
+    "valid": {
+      "0 hr Beef": 30,
+      "12 hr Beef": 31,
+      "24 hr Beef": 34,
+      "36+ hr Beef": 34,
+      "0 hr Mutton": 31,
+      "12 hr Mutton": 31,
+      "24 hr Mutton": 32,
+      "36 hr Mutton": 22,
+      "48 hr Mutton": 32
+    },
+    "test": {
+      "0 hr Beef": 31,
+      "12 hr Beef": 31,
+      "24 hr Beef": 35,
+      "36+ hr Beef": 34,
+      "0 hr Mutton": 31,
+      "12 hr Mutton": 32,
+      "24 hr Mutton": 33,
+      "36 hr Mutton": 23,
+      "48 hr Mutton": 32
+    }
+  },
+  "split_totals": {
+    "train": 1290,
+    "valid": 277,
+    "test": 282
+  },
+  "total_images": 1849,
+  "split_assignments_preserved": true,
+  "random_resplitting_performed": false,
+  "verification": {
+    "hash_algorithm": "MD5",
+    "within_split_duplicates": {
+      "train": [],
+      "valid": [],
+      "test": []
+    },
+    "cross_split_overlap": [
+      {
+        "pair": "train-valid",
+        "shared_md5_count": 0,
+        "shared_md5": []
+      },
+      {
+        "pair": "train-test",
+        "shared_md5_count": 0,
+        "shared_md5": []
+      },
+      {
+        "pair": "valid-test",
+        "shared_md5_count": 0,
+        "shared_md5": []
+      }
+    ],
+    "mutton_36_48_shared_md5_count": 0,
+    "mutton_36_48_shared_md5": [],
+    "dataset_clean": true
+  }
+}

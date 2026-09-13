@@ -14,7 +14,7 @@ IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".bmp", ".tif", ".tiff"}
 
 
 def digest(path: Path) -> str:
-    hasher = hashlib.sha256()
+    hasher = hashlib.md5()
     with path.open("rb") as stream:
         for chunk in iter(lambda: stream.read(1024 * 1024), b""):
             hasher.update(chunk)
@@ -38,10 +38,10 @@ def main() -> None:
         by_hash[digest(path)].append({"path": relative.as_posix(), "class": class_name})
 
     duplicate_groups = []
-    for sha256, files in sorted(by_hash.items()):
+    for md5, files in sorted(by_hash.items()):
         if len(files) > 1:
             duplicate_groups.append({
-                "sha256": sha256,
+                "md5": md5,
                 "count": len(files),
                 "cross_class": len({item["class"] for item in files}) > 1,
                 "files": files,
@@ -53,7 +53,7 @@ def main() -> None:
         for left, right in combinations(classes, 2):
             pair_overlaps[(left, right)] += 1
     report = {
-        "hash_algorithm": "sha256",
+        "hash_algorithm": "MD5",
         "total_files": sum(class_counts.values()),
         "unique_hashes": len(by_hash),
         "class_counts": dict(sorted(class_counts.items())),

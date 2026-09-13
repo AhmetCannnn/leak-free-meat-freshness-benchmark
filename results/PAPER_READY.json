@@ -1,0 +1,28 @@
+{
+  "created_at_utc": "2026-09-12T08:18:19.637447+00:00",
+  "experiment_version": "nine-class-v1",
+  "dataset_manifest_md5": "7d84bfcbe1fcce33517b75659d9e7795",
+  "completed_runs": 20,
+  "models": [
+    "mobilenetv3_large_100",
+    "efficientnet_b0",
+    "mobilenetv2_100",
+    "shufflenet_v2_x1_0"
+  ],
+  "seeds": [
+    42,
+    123,
+    2026,
+    3407,
+    9103
+  ],
+  "hardware_compatibility_key": [
+    "mps",
+    null,
+    "Apple Silicon (arm64)",
+    "2.8.0",
+    "0.23.0",
+    "1.0.27"
+  ],
+  "figure": "figure16_mean_normalized_confusion_matrices.png"
+}

@@ -22,7 +22,8 @@ data/**/*.tiff
 *.pt
 *.ckpt
 runs/
+runs_9class/
+Clean_Dataset_9class_splits/
 checkpoints/
 tmp/
 outputs/
-

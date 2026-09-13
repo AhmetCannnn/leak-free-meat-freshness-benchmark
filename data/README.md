@@ -1,19 +1,18 @@
 # Data access
 
-The source images are not committed to Git. The source dataset is available
-from Mendeley Data: https://data.mendeley.com/datasets/4tj9t3n6vj/1
+The image files are not committed to this Git repository. Download version 1 of the source dataset from:
 
-The source dataset's redistribution terms must be confirmed before cleaned
-images are deposited in a public archive. Until then, the versioned manifests
-and reconstruction scripts are the canonical definition of the benchmark.
+https://data.mendeley.com/datasets/4tj9t3n6vj/1
 
-Expected local layout:
+Use the `Meat Freshness/Original Images` directory as the source root for the audit and reconstruction commands. The canonical nine-class benchmark is defined by `manifests/benchmark_manifest_md5.csv` and can be reconstructed with `scripts/build_clean_benchmark.py`.
+
+Expected reconstructed layout:
 
 ```text
-data/source/  # downloaded source dataset
-data/clean/   # reconstructed 8-class benchmark
+Clean_Dataset_9class_splits/
+  train/<nine class folders>/
+  valid/<nine class folders>/
+  test/<nine class folders>/
 ```
 
-The benchmark contains 1,849 raw images: 1,290 train, 277 validation, and 282
-test. No offline-augmented image belongs to the clean benchmark.
-
+The source dataset terms govern redistribution of the images. This repository distributes the benchmark definition, audit and reconstruction code, verification evidence, and aggregate experimental results; it does not relicense the source images.

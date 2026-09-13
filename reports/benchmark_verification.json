@@ -1,12 +1,24 @@
 {
-  "benchmark_version": "0.1.0",
-  "manifest": "manifests/benchmark_manifest.csv",
+  "benchmark_version": "1.0.0",
+  "manifest": "manifests/benchmark_manifest_md5.csv",
+  "hash_algorithm": "MD5",
   "split_counts": {
+    "test": 282,
     "train": 1290,
-    "valid": 277,
-    "test": 282
+    "valid": 277
   },
   "class_counts": {
+    "test": {
+      "0 hr Beef": 31,
+      "0 hr Mutton": 31,
+      "12 hr Beef": 31,
+      "12 hr Mutton": 32,
+      "24 hr Beef": 35,
+      "24 hr Mutton": 33,
+      "36 hr Mutton": 23,
+      "36+ hr Beef": 34,
+      "48 hr Mutton": 32
+    },
     "train": {
       "0 hr Beef": 140,
       "0 hr Mutton": 144,
@@ -14,8 +26,9 @@
       "12 hr Mutton": 146,
       "24 hr Beef": 158,
       "24 hr Mutton": 151,
+      "36 hr Mutton": 103,
       "36+ hr Beef": 157,
-      "36+ hr Mutton": 252
+      "48 hr Mutton": 149
     },
     "valid": {
       "0 hr Beef": 30,
@@ -24,34 +37,23 @@
       "12 hr Mutton": 31,
       "24 hr Beef": 34,
       "24 hr Mutton": 32,
+      "36 hr Mutton": 22,
       "36+ hr Beef": 34,
-      "36+ hr Mutton": 54
-    },
-    "test": {
-      "0 hr Beef": 31,
-      "0 hr Mutton": 31,
-      "12 hr Beef": 31,
-      "12 hr Mutton": 32,
-      "24 hr Beef": 35,
-      "24 hr Mutton": 33,
-      "36+ hr Beef": 34,
-      "36+ hr Mutton": 55
+      "48 hr Mutton": 32
     }
   },
   "leakage": {
     "train-valid": {
-      "sha256_overlap_count": 0,
-      "source_identity_overlap_count": 0
+      "md5_overlap_count": 0
     },
     "train-test": {
-      "sha256_overlap_count": 0,
-      "source_identity_overlap_count": 0
+      "md5_overlap_count": 0
     },
     "valid-test": {
-      "sha256_overlap_count": 0,
-      "source_identity_overlap_count": 0
+      "md5_overlap_count": 0
     }
   },
+  "mutton_36_48_shared_md5_count": 0,
   "checks_passed": true,
   "errors": []
 }
