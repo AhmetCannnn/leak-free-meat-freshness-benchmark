@@ -4,6 +4,7 @@ title: "Leak-Free Meat Freshness Benchmark"
 type: software
 version: 1.0.0
 doi: "10.5281/zenodo.22733892"
+date-released: "2026-09-13"
 authors:
   - family-names: Citak
     given-names: Ahmet Can

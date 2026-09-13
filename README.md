@@ -2,7 +2,7 @@
 
 Reproducibility package for the nine-class beef and mutton freshness benchmark described in the associated manuscript. The package records the original-dataset audit, the fixed clean split, leakage verification, the four-model five-seed training protocol, and the reported aggregate results.
 
-> **Release status:** the scientific contents for `v1.0.0` are complete and verified. The associated dataset archive has the reserved Zenodo DOI [`10.5281/zenodo.22733892`](https://doi.org/10.5281/zenodo.22733892); the DOI will resolve after the Zenodo record is published.
+> **Release status:** `v1.0.0` is complete and verified. The cleaned benchmark is permanently archived at Zenodo under DOI [`10.5281/zenodo.22733892`](https://doi.org/10.5281/zenodo.22733892).
 
 ## Benchmark
 
