@@ -26,6 +26,7 @@ The benchmark contains 1,849 original images. Offline-augmented images are exclu
 - `manifests/benchmark_manifest_md5.csv`: exact split membership and MD5 digest for every benchmark image.
 - `manifests/verification_report.json`: fixed-split verification metadata used by the training notebook.
 - `scripts/audit_original_dataset.py`: exact-duplicate audit for the Mendeley original images.
+- `scripts/audit_original_split_provenance.py`: filename-based source-provenance audit showing that augmented variants of the same original image occur across the published training, validation, and test partitions.
 - `scripts/build_clean_benchmark.py`: deterministic reconstruction from the original images and manifest.
 - `scripts/verify_clean_benchmark.py`: class, count, file, MD5, and cross-split leakage checks.
 - `notebooks/meat_freshness_9class_multirun.ipynb`: resumable four-model, five-seed experiment and paper-ready aggregation.
@@ -51,6 +52,10 @@ Download version 1 of the source dataset from [Mendeley Data](https://data.mende
 python3 scripts/audit_original_dataset.py \
   --source-root "/path/to/Meat Freshness/Original Images"
 
+python3 scripts/audit_original_split_provenance.py \
+  --split-root "/path/to/Meat Freshness/Data Splits" \
+  --output reports/original_split_provenance_audit.json
+
 python3 scripts/build_clean_benchmark.py \
   --source-root "/path/to/Meat Freshness/Original Images" \
   --output Clean_Dataset_9class_splits
@@ -60,6 +65,8 @@ python3 scripts/verify_clean_benchmark.py \
 ```
 
 The verification command must report 1,849 files, nine expected classes, no duplicate MD5 within a split, no MD5 overlap across splits, and no MD5 overlap between the 36 h and 48 h Mutton classes.
+
+The provenance audit uses the source dataset's documented augmented-file naming pattern: the prefix before `_rot` is the original image identifier. It reports overlap both inclusively and as mutually exclusive train-validation, train-test, validation-test, and all-three-partition groups. In the published augmented splits, every one of the 1,800 test files traces to a class/source identifier that also occurs in training or validation; no test source identifier is unseen in both partitions.
 
 ## Training and resume
 

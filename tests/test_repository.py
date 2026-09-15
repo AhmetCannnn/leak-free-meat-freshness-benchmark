@@ -29,6 +29,7 @@ class RepositoryTests(unittest.TestCase):
             "manifests/benchmark_manifest_md5.csv",
             "manifests/verification_report.json",
             "reports/benchmark_verification.json",
+            "reports/original_split_provenance_audit.json",
             "results/PAPER_READY.json",
             "notebooks/meat_freshness_9class_multirun.ipynb",
         ]
@@ -85,6 +86,33 @@ class RepositoryTests(unittest.TestCase):
         self.assertEqual(record["completed_runs"], 20)
         self.assertEqual(len(record["models"]), 4)
         self.assertEqual(record["seeds"], [42, 123, 2026, 3407, 9103])
+
+    def test_original_split_provenance_audit(self):
+        report = json.loads(
+            (ROOT / "reports/original_split_provenance_audit.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        self.assertEqual(report["status"], "LEAKAGE_DETECTED")
+        self.assertEqual(
+            report["global"]["file_counts"],
+            {"train": 12960, "valid": 3240, "test": 1800},
+        )
+        self.assertEqual(
+            report["global"][
+                "test_files_whose_class_source_id_occurs_in_train_or_valid"
+            ],
+            1800,
+        )
+        self.assertEqual(
+            report["global"][
+                "test_unique_class_source_ids_not_in_train_or_valid"
+            ],
+            0,
+        )
+        beef_zero = report["classes"]["0 hr Beef"]
+        self.assertEqual(beef_zero["source_id_overlaps"]["all_three"], 72)
+        self.assertEqual(beef_zero["source_id_overlaps"]["train_test_only"], 78)
 
 
 if __name__ == "__main__":

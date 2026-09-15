@@ -1,0 +1,266 @@
+{
+  "generated_utc": "2026-09-15T07:11:47.667261+00:00",
+  "source_split_root": "Meat Freshness/Data Splits",
+  "source_identifier_rule": "Within each class, the filename prefix before '_rot' identifies the original source image used to create an augmented variant.",
+  "splits": [
+    "train",
+    "valid",
+    "test"
+  ],
+  "status": "LEAKAGE_DETECTED",
+  "global": {
+    "file_counts": {
+      "train": 12960,
+      "valid": 3240,
+      "test": 1800
+    },
+    "unique_class_source_id_counts": {
+      "train": 4468,
+      "valid": 2435,
+      "test": 1539
+    },
+    "class_source_id_overlaps": {
+      "train_valid_inclusive": 2403,
+      "train_test_inclusive": 1510,
+      "valid_test_inclusive": 719,
+      "train_valid_only": 1713,
+      "train_test_only": 820,
+      "valid_test_only": 29,
+      "all_three": 690
+    },
+    "test_unique_class_source_ids_not_in_train_or_valid": 0,
+    "test_files_whose_class_source_id_occurs_in_train_or_valid": 1800
+  },
+  "classes": {
+    "0 hr Beef": {
+      "file_counts": {
+        "train": 1296,
+        "valid": 324,
+        "test": 180
+      },
+      "unique_source_id_counts": {
+        "train": 446,
+        "valid": 240,
+        "test": 153
+      },
+      "source_id_overlaps": {
+        "train_valid_inclusive": 236,
+        "train_test_inclusive": 150,
+        "valid_test_inclusive": 75,
+        "train_valid_only": 164,
+        "train_test_only": 78,
+        "valid_test_only": 3,
+        "all_three": 72
+      },
+      "test_unique_source_ids_not_in_train_or_valid": 0,
+      "test_files_whose_source_id_occurs_in_train_or_valid": 180
+    },
+    "0 hr Mutton": {
+      "file_counts": {
+        "train": 1296,
+        "valid": 324,
+        "test": 180
+      },
+      "unique_source_id_counts": {
+        "train": 447,
+        "valid": 247,
+        "test": 153
+      },
+      "source_id_overlaps": {
+        "train_valid_inclusive": 244,
+        "train_test_inclusive": 150,
+        "valid_test_inclusive": 72,
+        "train_valid_only": 175,
+        "train_test_only": 81,
+        "valid_test_only": 3,
+        "all_three": 69
+      },
+      "test_unique_source_ids_not_in_train_or_valid": 0,
+      "test_files_whose_source_id_occurs_in_train_or_valid": 180
+    },
+    "12 hr Beef": {
+      "file_counts": {
+        "train": 1296,
+        "valid": 324,
+        "test": 180
+      },
+      "unique_source_id_counts": {
+        "train": 448,
+        "valid": 249,
+        "test": 152
+      },
+      "source_id_overlaps": {
+        "train_valid_inclusive": 247,
+        "train_test_inclusive": 150,
+        "valid_test_inclusive": 80,
+        "train_valid_only": 169,
+        "train_test_only": 72,
+        "valid_test_only": 2,
+        "all_three": 78
+      },
+      "test_unique_source_ids_not_in_train_or_valid": 0,
+      "test_files_whose_source_id_occurs_in_train_or_valid": 180
+    },
+    "12 hr Mutton": {
+      "file_counts": {
+        "train": 1296,
+        "valid": 324,
+        "test": 180
+      },
+      "unique_source_id_counts": {
+        "train": 449,
+        "valid": 241,
+        "test": 153
+      },
+      "source_id_overlaps": {
+        "train_valid_inclusive": 240,
+        "train_test_inclusive": 152,
+        "valid_test_inclusive": 76,
+        "train_valid_only": 165,
+        "train_test_only": 77,
+        "valid_test_only": 1,
+        "all_three": 75
+      },
+      "test_unique_source_ids_not_in_train_or_valid": 0,
+      "test_files_whose_source_id_occurs_in_train_or_valid": 180
+    },
+    "24 hr Beef": {
+      "file_counts": {
+        "train": 1296,
+        "valid": 324,
+        "test": 180
+      },
+      "unique_source_id_counts": {
+        "train": 448,
+        "valid": 251,
+        "test": 153
+      },
+      "source_id_overlaps": {
+        "train_valid_inclusive": 249,
+        "train_test_inclusive": 151,
+        "valid_test_inclusive": 75,
+        "train_valid_only": 176,
+        "train_test_only": 78,
+        "valid_test_only": 2,
+        "all_three": 73
+      },
+      "test_unique_source_ids_not_in_train_or_valid": 0,
+      "test_files_whose_source_id_occurs_in_train_or_valid": 180
+    },
+    "24 hr Mutton": {
+      "file_counts": {
+        "train": 1296,
+        "valid": 324,
+        "test": 180
+      },
+      "unique_source_id_counts": {
+        "train": 446,
+        "valid": 250,
+        "test": 156
+      },
+      "source_id_overlaps": {
+        "train_valid_inclusive": 246,
+        "train_test_inclusive": 152,
+        "valid_test_inclusive": 76,
+        "train_valid_only": 174,
+        "train_test_only": 80,
+        "valid_test_only": 4,
+        "all_three": 72
+      },
+      "test_unique_source_ids_not_in_train_or_valid": 0,
+      "test_files_whose_source_id_occurs_in_train_or_valid": 180
+    },
+    "36 hr Beef": {
+      "file_counts": {
+        "train": 1296,
+        "valid": 324,
+        "test": 180
+      },
+      "unique_source_id_counts": {
+        "train": 445,
+        "valid": 236,
+        "test": 159
+      },
+      "source_id_overlaps": {
+        "train_valid_inclusive": 231,
+        "train_test_inclusive": 155,
+        "valid_test_inclusive": 61,
+        "train_valid_only": 174,
+        "train_test_only": 98,
+        "valid_test_only": 4,
+        "all_three": 57
+      },
+      "test_unique_source_ids_not_in_train_or_valid": 0,
+      "test_files_whose_source_id_occurs_in_train_or_valid": 180
+    },
+    "36 hr Mutton": {
+      "file_counts": {
+        "train": 1296,
+        "valid": 324,
+        "test": 180
+      },
+      "unique_source_id_counts": {
+        "train": 446,
+        "valid": 239,
+        "test": 150
+      },
+      "source_id_overlaps": {
+        "train_valid_inclusive": 235,
+        "train_test_inclusive": 146,
+        "valid_test_inclusive": 71,
+        "train_valid_only": 168,
+        "train_test_only": 79,
+        "valid_test_only": 4,
+        "all_three": 67
+      },
+      "test_unique_source_ids_not_in_train_or_valid": 0,
+      "test_files_whose_source_id_occurs_in_train_or_valid": 180
+    },
+    "48 hr Beef": {
+      "file_counts": {
+        "train": 1296,
+        "valid": 324,
+        "test": 180
+      },
+      "unique_source_id_counts": {
+        "train": 445,
+        "valid": 243,
+        "test": 153
+      },
+      "source_id_overlaps": {
+        "train_valid_inclusive": 238,
+        "train_test_inclusive": 148,
+        "valid_test_inclusive": 70,
+        "train_valid_only": 173,
+        "train_test_only": 83,
+        "valid_test_only": 5,
+        "all_three": 65
+      },
+      "test_unique_source_ids_not_in_train_or_valid": 0,
+      "test_files_whose_source_id_occurs_in_train_or_valid": 180
+    },
+    "48 hr Mutton": {
+      "file_counts": {
+        "train": 1296,
+        "valid": 324,
+        "test": 180
+      },
+      "unique_source_id_counts": {
+        "train": 448,
+        "valid": 239,
+        "test": 157
+      },
+      "source_id_overlaps": {
+        "train_valid_inclusive": 237,
+        "train_test_inclusive": 156,
+        "valid_test_inclusive": 63,
+        "train_valid_only": 175,
+        "train_test_only": 94,
+        "valid_test_only": 1,
+        "all_three": 62
+      },
+      "test_unique_source_ids_not_in_train_or_valid": 0,
+      "test_files_whose_source_id_occurs_in_train_or_valid": 180
+    }
+  }
+}
